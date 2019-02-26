@@ -12,7 +12,7 @@ const Nightmare = require('nightmare');
 
 (async () => {
     for (let i = 0; i < 10; i++) { // loop 10 times
-        const $ = Nightmare({ show: true }) // run new window when everytime return
+        const $ = Nightmare({ show: true }) // runs new window when every in loop
         await $.goto('https://duckduckgo.com')
         await $.type('#search_form_input_homepage', 'github nightmare')
         await $.click('#search_button_homepage')
