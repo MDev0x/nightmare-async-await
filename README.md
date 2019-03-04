@@ -7,5 +7,22 @@ let href = await $.evaluate(() => document.querySelector('#r1-0 a.result__a').hr
 console.log(href) 
 // waits until evaluate function end
 ```
-### index.js
-![alt-text](https://s.put.re/vvcsnv77.png)
+
+```javascript
+const Nightmare = require('nightmare');
+
+// waits until every line process for run func
+
+(async () => {
+    for (let i = 0; i < 10; i++) { // loop 10 times
+        const $ = Nightmare({ show: true }) // runs new window when every in loop
+        await $.goto('https://duckduckgo.com')
+        await $.type('#search_form_input_homepage', 'github nightmare')
+        await $.click('#search_button_homepage')
+        await $.wait('#r1-0 a.result__a')
+        let href = await $.evaluate(() => document.querySelector('#r1-0 a.result__a').href)
+        console.log(href)
+        await $.end()
+    }
+})();
+```
